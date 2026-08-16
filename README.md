@@ -47,13 +47,17 @@ Checked transverse momentum using
 
 ## Results
 
-Energy of the four leptons
+### Energy of the Four Leptons
 
-*Fig 1.1 Lepton Energy*
+![Lepton Energy](results/figures/lepton_energy.png)
 
-Calculated vs real invariant mass
+*Fig 1.1 — Energy of the four leptons.*
 
-*Fig 1.2 Lepton Invariant Mass*
+### Calculated vs Dataset Invariant Mass
+
+![Lepton Invariant Mass](results/figures/lepton_invariant_mass.png)
+
+*Fig 1.2 — Comparison of independently calculated invariant mass with the dataset values.*
 
 - Each event has **four leptons** with mixed charges, consistent with a four-lepton final state.  
 - Lepton energies vary a lot within and across events.  
