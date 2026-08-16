@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 
 #load dataset
 df = pd.read_csv("data/raw/higgs_4lepton.csv")
-'''
-print(df)
 
 print("first few rows of dataset:")
 print(df.head())
@@ -51,15 +49,28 @@ plt.show()
 cal_pt1=np.sqrt((df["px1"]**2 + df["py1"]**2))
 print("calculated pt value for lepton 1:")
 print(cal_pt1)
-'''
+
 
 #5. Calculate M invariant mass (M=√E² - px² - px² - pz²)
 #first we need to calcualte total e,px,py,pz)
-px = df[["px1","px2","px3","px4"]].sum(axis=1)
-py = df[["py1","py2","py3","py4"]].sum(axis=1)
-pz = df[["pz1","pz2","pz3","pz4"]].sum(axis=1)
-E = df[["E1","E2","E3","E4"]].sum(axis=1)
-M = np.sqrt((E)**2 - (px)**2 - (px)**2 - (pz)**2)
+df["px"] = df[["px1","px2","px3","px4"]].sum(axis=1)
+df["py"] = df[["py1","py2","py3","py4"]].sum(axis=1)
+df["pz"] = df[["pz1","pz2","pz3","pz4"]].sum(axis=1)
+df["E"] = df[["E1","E2","E3","E4"]].sum(axis=1)
+df["cal_M"] = np.sqrt(df["E"]**2 - df["px"]**2 - df["py"]**2 - df["pz"]**2)
 
 print("calculated M:")
-print(M)
+print(df["cal_M"])
+
+
+#6. visualizing invariant mass and event
+#bar plot
+df[["cal_M","M"]].plot(kind="bar")
+plt.xticks(range(len(df)), df["Event"], rotation=90)
+plt.xlabel("Collision event")
+plt.ylabel("Invariant mass M(GeV)")
+plt.title("Invariant mass M of Four Lepton")
+plt.legend(["calculated M","real M"])
+plt.tight_layout()
+plt.savefig("results/figures/lepton_invariant_mass.png")
+plt.show()
