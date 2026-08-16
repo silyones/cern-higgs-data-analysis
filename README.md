@@ -40,7 +40,7 @@ Checked transverse momentum using
 - Recalculated the invariant mass from total four-lepton energy and momentum:
 
 ```python
-     M=√E² - px² - px² - pz²
+     M = √E² - px² - px² - pz²
 ```
 
 - Compared my calculated mass (`cal_M`) with the official mass column (`M`)
